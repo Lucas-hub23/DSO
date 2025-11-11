@@ -1,0 +1,21 @@
+services:
+  gitea:
+    image: gitea/gitea:1.22
+    container_name: gitea
+    restart: unless-stopped
+    ports:
+      - "3000:3000"      # web
+      - "2222:22"      # (optioneel) SSH push; laat uit als je https wilt gebruiken
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__server__ROOT_URL=http://localhost:3000/
+      - GITEA__database__DB_TYPE=sqlite3
+    volumes:
+      - ./gitea/data:/data
+    networks:
+      - dso_net
+
+networks:
+  dso_net:
+    name: dso_net
