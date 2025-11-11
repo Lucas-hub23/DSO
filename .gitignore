@@ -1,2 +1,2 @@
-#gitea/data/ssh
-#gitea/data/git/.ssh
+gitea/data/ssh
+gitea/data/git/.ssh
